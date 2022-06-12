@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@import "~antd/dist/antd.css";
+
+
+.ant-btn-primary{
+    box-shadow: rgba(15, 179, 0, 0.3) 0px 8px 16px;
+}
