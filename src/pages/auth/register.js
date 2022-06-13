@@ -64,7 +64,7 @@ const Register = () => {
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
           initialValues={{
-            birthday: moment('2000-01-01', 'YYYY-MM-DD')
+            // birthday: moment('', 'YYYY-MM-DD')
           }}
           requiredMark
         >
@@ -136,10 +136,8 @@ const Register = () => {
                   label="Contraseña"
                   name="password"
                   hasFeedback
+                  required
                   rules={[{
-                    required: true,
-                    message: "Confirme su contraseña"
-                  }, {
                     validator: (_, value) => {
                       if (value) {
                         if (value.length > 7) {
@@ -164,17 +162,19 @@ const Register = () => {
                   label="Confirma tu contraseña"
                   name="confirm"
                   hasFeedback
-                  rules={[{
-                    required: true,
-                    message: "Confirme su contraseña"
-                  }, ({ getFieldValue }) => ({
+                  required
+                  rules={[({ getFieldValue }) => ({
                     validator: (_, value) => {
-                      if (getFieldValue('password') && value) {
-                        if (String(getFieldValue('password')) !== String(value)) {
-                          return Promise.reject(new Error('Contraseñas no coinciden'))
+                      if (getFieldValue('password')) {
+                        if (value) {
+                          if (String(getFieldValue('password')) !== String(value)) {
+                            return Promise.reject(new Error('Contraseñas no coinciden'))
+                          }
+                          return Promise.resolve()
                         }
-                        return Promise.resolve()
+                        return Promise.reject(new Error('Confirme su contraseña'))
                       }
+                      return Promise.reject(new Error('Escriba una contraseña'))
                     }
                   })]}
                 >
@@ -223,7 +223,7 @@ const Register = () => {
                     })
                   ]}
                 >
-                  <Input placeholder='xxx-xxxx-xxxx' type="number" min={0} />
+                  <Input placeholder='xxx-xxxx-xxxx' type="number" min={0} max={9999999999} />
                 </Form.Item>
               </Col>
             </Row>
