@@ -31,9 +31,7 @@ const Login = () => {
         loginUser(values)
     }
 
-    const onFinishFailed = err => {
-        console.log(err)
-    }
+    const onFinishFailed = () => { }
 
     return <Layout title="Iniciar sesión">
         <SEO title="Iniciar Sesión" />

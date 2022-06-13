@@ -1,36 +1,38 @@
 import * as React from "react"
-import { Button } from "antd"
+import { Typography } from "antd"
 import MainLayout from "../components/layout/main"
 import SEO from "../components/seo"
 import '../styles/global.css'
-import { navigate } from "gatsby"
 import UserContext from "../context/UserContext"
 
 
+const { Text } = Typography
 // markup
 const IndexPage = () => {
-  const { user, setUser, setToken } = React.useContext(UserContext)
-
-  const logout = () => {
-    localStorage.clear()
-    setUser()
-    setToken()
-    navigate('/auth/login')
-  }
+  const { user } = React.useContext(UserContext)
 
   return <>
     <SEO title="Home" />
     <MainLayout>
       {
         user ?
-          <>
-            <p className="text-8xl">
-              Hola {`${user.name} ${user.lastname}`}
+          <div className="px-12 py-4">
+            <Text className="text-xl">
+              Hola <span className=" font-semibold">{`${user.name} ${user.lastname}`}</span>
+            </Text>
+            <p>
+              Bienvenido a esta primera demo de NetWork Social, hasta ahora no se tiene pensado algún objetivo de uso para esta aplicación pero cualquier sugerencia enviada al desarrollador será tomada en cuenta para el crecimiento y/o desarrollo de dicha plataforma
             </p>
-            <Button type="primary" onClick={() => logout()}>
-              Cerrar sesión
-            </Button>
-          </>
+            <p>
+              Siéntete libre de navegar por la aplicación, interactuar y borrar tu cuenta
+            </p>
+            <p>
+              No queremos ser una copia de cualquier red social existente, por eso no se tiene pensado un objetivo de uso
+            </p>
+            <p>
+              Atte: GZE00
+            </p>
+          </div>
           : <></>
       }
     </MainLayout>

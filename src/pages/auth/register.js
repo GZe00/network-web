@@ -30,9 +30,7 @@ const Register = () => {
 
   }
 
-  const onFinishFailed = err => {
-    console.log(err)
-  }
+  const onFinishFailed = () => {  }
 
   return <Layout title="Registro">
     <SEO title="Registro" />

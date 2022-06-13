@@ -3,6 +3,8 @@ import PropTypes from "prop-types"
 import { navigate } from 'gatsby'
 import BgLoad from "../../images/bg-load.jpg"
 import useUser from '../hooks/useUser'
+import NavBar from './navbar'
+
 
 const MainLayout = ({ children }) => {
     const { user, token, setUser, setToken } = useUser()
@@ -28,8 +30,11 @@ const MainLayout = ({ children }) => {
         {
             //Validar que apiToken y user sean correctos
             user && token ? (
-                <main className={`w-full h-screen overflow-y-auto`}>
-                    {children}
+                <main className="w-full overflow-y-auto" style={{ height: '100vh' }}>
+                    <NavBar />
+                    <div className="w-8/12 h-screen overflow-y-auto mx-auto bg-slate-100">
+                        {children}
+                    </div>
                 </main>)
                 : <div className="w-full h-screen">
                     <img className="object-cover ease-in duration-200 brightness-50 shadow-inherit w-full h-screen" src={BgLoad} alt="Imagen de carga" />
