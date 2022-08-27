@@ -43,7 +43,7 @@ const Layout = ({ children, title }) => {
                             <div className="flex items-center justify-center w-full h-full">
                                 <StaticImage
                                     objectFit="cover"
-                                    className="rounded-xl shadow-xl w-full h-full"
+                                    className="shadow-xl w-full h-full"
                                     src="../../images/bg-auth.jpg"
                                     alt="Login" />
                             </div>

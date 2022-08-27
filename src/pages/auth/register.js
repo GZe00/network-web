@@ -30,7 +30,7 @@ const Register = () => {
 
   }
 
-  const onFinishFailed = () => {  }
+  const onFinishFailed = () => { }
 
   return <Layout title="Registro">
     <SEO title="Registro" />
@@ -38,21 +38,29 @@ const Register = () => {
       user !== undefined && user ?
         <Row>
           <Col span={24}>
-            <div className="w-full flex flex-col justify-center px-4 py-6 bg-slate-300 rounded-lg shadow-xl border-2 border-slate-200">
-              <Space direction="vertical" size={14} style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <CheckCircleOutlined className="text-8xl" style={{ color: "rgb(21,128,61)" }} />
-                <Title level={4}>Registro completo</Title>
-                <Text>
-                  <span className="text-xl">B</span>ienvenido a <span className="text-xl italic">
-                    The Social Work
-                  </span> {`${user.name} ${user.lastname}`}, ha terminado el proceso de registro ahora puede iniciar sesión con su correo <span className="font-semibold">
-                    {user.email}
-                  </span>.
-                </Text>
-                <Button size="large" type="primary" onClick={() => navigate('/auth/login')}>
-                  Iniciar sesión
-                </Button>
-              </Space>
+            <div className="w-full flex flex-col justify-center px-4 py-6 bg-slate-200 rounded-lg shadow-xl border-2 border-slate-100">
+              <Row gutter={[8, 24]}>
+                <Col span={24}>
+                  <Space direction="vertical" size={14} style={{ width: '90%', display: 'flex', flexDirection: 'column', alignItems: 'center', margin: "0 auto" }}>
+                    <CheckCircleOutlined className="text-8xl" style={{ color: "rgb(21,128,61)" }} />
+                    <Title level={4}>Registro completo</Title>
+                    <div className="text-center md:text-left">
+                      <Text>
+                        <span className="text-xl">B</span>ienvenido a <span className="text-xl italic">
+                          The Social Work
+                        </span> {`${user.name} ${user.lastname}`}, ha terminado el proceso de registro ahora puede iniciar sesión con su correo <span className="font-semibold">
+                          {user.email}
+                        </span>.
+                      </Text>
+                    </div>
+                  </Space>
+                </Col>
+                <Col span={24} md={20} style={{ margin: '0 auto', }}>
+                  <Button style={{ width: "100%" }} size="large" type="primary" onClick={() => navigate('/auth/login')}>
+                    Iniciar sesión
+                  </Button>
+                </Col>
+              </Row>
             </div>
           </Col>
         </Row>
