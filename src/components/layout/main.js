@@ -4,9 +4,9 @@ import { navigate } from 'gatsby'
 import BgLoad from "../../images/bg-load.jpg"
 import useUser from '../hooks/useUser'
 import NavBar from './navbar'
+import InsightsLandingPage from '../insights/InsightsLandingPage'
 
-
-const MainLayout = ({ children }) => {
+const MainLayout = ({ children, page }) => {
     const { user, token, setUser, setToken } = useUser()
 
     React.useEffect(() => {
@@ -28,11 +28,15 @@ const MainLayout = ({ children }) => {
 
     return <>
         {
-            //Validar que apiToken y user sean correctos
+            //Validar que apiToken y user sean correctos si es que existen en localStorage
             user && token ? (
-                <main className="w-full overflow-y-auto" style={{ height: '100vh' }}>
+                <main className="w-full overflow-y-auto bg-slate-100" style={{ height: '100vh' }}>
                     <NavBar />
-                    <div className="w-8/12 h-screen overflow-y-auto mx-auto bg-slate-100">
+                    {
+                        page === "landingPage" /*&& user.setting.showInsights */ ?
+                            <InsightsLandingPage /> : null
+                    }
+                    <div className="w-full px-4 md:px-0 md:w-10/12 lg:w-8/12 h-auto overflow-y-auto mx-auto">
                         {children}
                     </div>
                 </main>)
