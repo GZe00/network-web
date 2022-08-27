@@ -37,7 +37,7 @@ const MainLayout = ({ children }) => {
                     </div>
                 </main>)
                 : <div className="w-full h-screen">
-                    <img className="object-cover ease-in duration-200 brightness-50 shadow-inherit w-full h-screen" src={BgLoad} alt="Imagen de carga" />
+                    <img className="blur-esm object-cover ease-in duration-200 brightness-50 shadow-inherit w-full h-screen" src={BgLoad} alt="Imagen de carga" />
                 </div>
         }
     </>

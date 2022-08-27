@@ -32,14 +32,17 @@ const Layout = ({ children, title }) => {
     return <>
         {
             !user && !token ?
-                <div className="w-full h-screen flex justify-center items-center">
+                <div className={`
+                w-full h-screen flex justify-center items-center
+                ${title === "Registro" ? 'bg-gradient-to-r from-network-secondary-900 via-network-secondary-800 to-network-secondary-500 backdrop-blur-xl' : 'bg-gradient-to-r from-network-dark-900 via-network-dark-500 to-network-dark-700 backdrop-blur-xl'}                
+                `}>
                     <div className="flex w-full h-full flex-col md:flex-row overflow-y-auto">
                         <div className={` hidden md:block w-5/12 h-full overflow-y-auto
                 ${title === "Registro" ? 'bg-gradient-to-r from-network-secondary-900 via-network-secondary-800 to-network-secondary-500 backdrop-blur-xl' : 'bg-gradient-to-r from-network-dark-900 via-network-dark-500 to-network-dark-700 backdrop-blur-xl'}
             `}>
                             <div className="flex items-center justify-center w-full h-full">
                                 <StaticImage
-                                    fit="contain"
+                                    objectFit="cover"
                                     className="rounded-xl shadow-xl w-48 h-120 md:w-7/12"
                                     src="../../images/bg-auth.jpg"
                                     alt="Login" />
@@ -60,7 +63,7 @@ const Layout = ({ children, title }) => {
                     </div>
                 </div>
                 : <div className="w-full h-screen">
-                    <img className="object-cover ease-in duration-200 brightness-50 shadow-inherit w-full h-screen" src={BgLoad} alt="Imagen de carga" />
+                    <img className="blur-esm object-cover ease-in duration-200 brightness-50 shadow-inherit w-full h-screen" src={BgLoad} alt="Imagen de carga" />
                 </div>
         }
     </>

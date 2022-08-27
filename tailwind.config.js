@@ -33,6 +33,9 @@ module.exports = {
         "network-light": "#F2F5FB",
         "network-green": "#1fff00",
         "gray": "#f0f0f0"
+      },
+      blur: {
+        "esm": "2px"
       }
     }
   },
