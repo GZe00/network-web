@@ -29,8 +29,8 @@ const NavBar = () => {
 
     return <div className={`w-full flex items-center justify-between h-14 px-8
     bg-gradient-to-r from-network-primary-300 via-network-primary-400 to-network-primary-400 rounded-b-md rounded-bl-md`}>
-        <div className="p-1 border-2 border-white rounded-full bg-network-primary-300">
-            <img className="w-9 cursor-pointer" src={logo} alt="Bienvenido a network social" onClick={() => navigate('/')} />
+        <div className="border-2 border-white rounded-full bg-network-primary-300" style={{ padding: "2px" }}>
+            <img className="w-10 cursor-pointer" src={logo} alt="Bienvenido a network social" onClick={() => navigate('/')} />
         </div>
         <div className="">
             <div className="w-max">

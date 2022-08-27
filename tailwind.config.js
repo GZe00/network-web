@@ -5,6 +5,8 @@ module.exports = {
   theme: {
     extend: {
       height: {
+        '50': '12.5rem',
+        '84': '21rem',
         '104': '26rem',
         '112': '28rem',
         '120': '30rem',
@@ -35,7 +37,11 @@ module.exports = {
         "gray": "#f0f0f0"
       },
       blur: {
+        "essm": "1px",
         "esm": "2px"
+      },
+      grayscale: {
+        35: '35%',
       }
     }
   },
