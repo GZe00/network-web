@@ -1,6 +1,6 @@
-import * as React from 'react'
-import * as authApi from "./"
-
+import { navigate } from 'gatsby';
+import * as React from 'react';
+import * as authApi from "./";
 
 const useAuth = () => {
     const [loading, setLoading] = React.useState(false)
@@ -35,9 +35,14 @@ const useAuth = () => {
                 setData(response.data)
             }
         }).catch(error => {
-            console.log(error)
+            // console.log(error)
             if (error.response && error.response.status === 400) {
                 setError(error.response.data.message)
+            }
+            if(error.response.status === 403) {
+                if(error.response.data.code === "verify-account"){
+                    navigate('/checkpoint?account=verify-account')
+                }
             }
         }).finally(() => {
             setLoading(false)
