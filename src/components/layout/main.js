@@ -21,9 +21,9 @@ const MainLayout = ({ children, page }) => {
                 let userData;
 
                 // Continuar
-                console.log(tokenLocalStorage)
+                // console.log(tokenLocalStorage)
                 validateTokenLocalStorage(tokenLocalStorage.token).then(response => {
-                    console.log(response)
+                    // console.log(response)
                 })
 
                 if (!user)

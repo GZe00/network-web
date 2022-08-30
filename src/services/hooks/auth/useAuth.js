@@ -17,7 +17,7 @@ const useAuth = () => {
                     setError("Ha ocurrido un error")
                 }
             }).catch(error => {
-                console.log(error)
+                // console.log(error)
                 if (error.response.status === 400) {
                     setError("Ha ocurrido un error")
                 }
@@ -56,7 +56,7 @@ const useAuth = () => {
                     resolve(response.data.available)
                 }
             }).catch(error => {
-                console.log(error)
+                // console.log(error)
                 reject(false)
             })
         })
@@ -69,7 +69,7 @@ const useAuth = () => {
                     resolve(response.data.available)
                 }
             }).catch(error => {
-                console.log(error)
+                // console.log(error)
                 reject(false)
             })
         })
