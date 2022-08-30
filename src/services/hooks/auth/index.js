@@ -1,4 +1,4 @@
-import { api } from "./api"
+import { api } from "../../api"
 
 const login = async form => {
     return await api.post("/auth/network/api/login", form)
