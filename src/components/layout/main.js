@@ -5,6 +5,7 @@ import BgLoad from "../../images/bg-load.jpg"
 import useUser from '../hooks/useUser'
 import NavBar from './navbar'
 import InsightsLandingPage from '../insights/InsightsLandingPage'
+import { validateTokenLocalStorage } from '../../services/auth'
 
 const MainLayout = ({ children, page }) => {
     const { user, token, setUser, setToken } = useUser()
@@ -12,15 +13,24 @@ const MainLayout = ({ children, page }) => {
     React.useEffect(() => {
         if (typeof window !== 'undefined') {
             // localStorage.setItem('data', JSON.stringify(req.mongo));
-            const isTokenLocal = localStorage.getItem('data')
-            if (!isTokenLocal) {
+            const existsTokenLocalStorage = localStorage.getItem('data')
+            if (!existsTokenLocalStorage) {
                 navigate('/auth/login')
             } else {
+                const tokenLocalStorage = JSON.parse(existsTokenLocalStorage)
+                let userData;
+
+                // Continuar
+                console.log(tokenLocalStorage)
+                validateTokenLocalStorage(tokenLocalStorage.token).then(response => {
+                    console.log(response)
+                })
+
                 if (!user)
-                    setUser(JSON.parse(isTokenLocal).user)
+                    setUser(tokenLocalStorage.user)
 
                 if (!token)
-                    setToken(JSON.parse(isTokenLocal).token)
+                    setToken(tokenLocalStorage.token)
 
             }
         }
