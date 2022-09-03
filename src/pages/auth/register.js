@@ -3,14 +3,12 @@ import Layout from '../../components/layout/login'
 import SEO from '../../components/seo'
 import { Button, Col, ConfigProvider, DatePicker, Form, Input, Row, Space, Tooltip, Typography } from 'antd'
 import { navigate } from 'gatsby'
-// import moment from 'moment';
 import 'moment/locale/es-mx';
 import locale from 'antd/lib/locale/es_ES';
 import ReCAPTCHA from 'react-google-recaptcha'
 import useAuth from "../../services/hooks/auth/useAuth"
 import { isEmailValid, passwordStrong } from "../../components/helpers"
 import { CheckCircleOutlined } from '@ant-design/icons'
-
 
 const { Text, Title } = Typography
 
@@ -23,10 +21,11 @@ const Register = () => {
   const handleCaptcha = () => setIsCaptcha(true)
 
   const onFinish = async values => {
-    values.birthday = values.birthday.format("YYYY-MM-DD")
-    let result = await createUser(values)
+    if (values.birthday)
+      values.birthday = values.birthday.format("YYYY-MM-DD");
+    let result = await createUser(values);
     if (result)
-      setUser(result)
+      setUser(result);
 
   }
 
