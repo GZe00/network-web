@@ -1,6 +1,6 @@
-import { navigate } from 'gatsby';
 import * as React from 'react';
 import * as authApi from "./";
+import { navigate } from 'gatsby';
 
 const useAuth = () => {
     const [loading, setLoading] = React.useState(false)
