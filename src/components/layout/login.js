@@ -34,9 +34,11 @@ const Layout = ({ children, title }) => {
                 <>
                     {
                         title && title === "verify-account" ?
-                            <Checkpoint >
-                                {children}
-                            </Checkpoint> : null
+                            <>
+                                <Checkpoint >
+                                    {children}
+                                </Checkpoint>
+                            </> : null
                     }
                     {
                         title && (title === "Iniciar sesión" || title === "Registro") ?
