@@ -9,7 +9,7 @@ export const passwordStrong = (password: string) => {
 }
 
 export const isUsernameValid = (username: string) => {
-    const re = /[a-zA-Z0-9.]+/
+    const re = /^(?!(?:[^.]*\.){2})[A-Za-z][A-Za-z0-9.]{3,18}$(?<!\\.)/
     return re.test(username)
 }
 
