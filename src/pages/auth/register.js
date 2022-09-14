@@ -7,7 +7,7 @@ import 'moment/locale/es-mx';
 import locale from 'antd/lib/locale/es_ES';
 import ReCAPTCHA from 'react-google-recaptcha'
 import useAuth from "../../services/hooks/auth/useAuth"
-import { isEmailValid, passwordStrong } from "../../components/helpers"
+import { isEmailValid, passwordStrong, isUsernameValid } from "../../components/helpers"
 import { CheckCircleOutlined } from '@ant-design/icons'
 
 const { Text, Title } = Typography
@@ -194,18 +194,20 @@ const Register = () => {
                   name="username"
                   hasFeedback
                   rules={[{
-                    //Verificar que el usuario no esté registrado
                     validator: async (_, value) => {
-                      if (value) {
-                        if (value.length > 3) {
-                          if (await isUserNameUsed(value)) {
-                            return Promise.resolve()
-                          }
-                          return Promise.reject(new Error("Nombre de usuario ya ha sido utilizado"))
-                        }
-                        return Promise.reject(new Error("Nombre de usuario demasiado corto"))
+                      if (!value) {
+                        return Promise.reject(new Error("Ingresa tu nombre de usuario"));
                       }
-                      return Promise.reject(new Error("Ingresa tu nombre de usuario"))
+                      if (value.length <= 3) {
+                        return Promise.reject(new Error("Nombre de usuario demasiado corto"));
+                      }
+                      if (!isUsernameValid(value)) {
+                        return Promise.reject(new Error("Nombre de usuario no válido."));
+                      }
+                      if (!(await isUserNameUsed(value))) {
+                        return Promise.reject(new Error("Nombre de usuario ya ha sido utilizado"));
+                      }
+                      return Promise.resolve()
                     }
                   }
                   ]}
